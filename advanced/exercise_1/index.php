@@ -15,7 +15,7 @@
     return number_format(($fahrenheit - 32) * 5 / 9, 1);
   }
   switch (true) {
-    case !$_GET['fahrenheit'] && !is_numeric($_GET['fahrenheit']):
+    case !isset($_GET['fahrenheit']) || !is_numeric($_GET['fahrenheit']):
       $result = "No result available!";
       $image = "no-result.jpg";
       break;
@@ -51,7 +51,7 @@
       <div class="form-group">
         <label for="exampleInputEmail1">Fahrenheit</label>
         <?php
-        if (!$_GET['fahrenheit'] && !is_numeric($_GET['fahrenheit']))
+        if (!isset($_GET['fahrenheit']) || !is_numeric($_GET['fahrenheit']))
           echo "<input type='number' step='0.1' class='form-control' name='fahrenheit'>";
         else
           echo "<input type='number' step='0.1' class='form-control' name='fahrenheit' value='" . $_GET['fahrenheit'] . "'>";
